@@ -21,13 +21,13 @@ from sklearn.naive_bayes import GaussianNB
 from sklearn.neighbors import KNeighborsClassifier
 
 
-# used for
+# used for keeping track of classification performance
 acc_MLP  = []
 acc_NB   = []
 acc_KNN  = []
 
 # number of runs to get the average classification performance
-num_runs = 2
+num_runs = 5
 
 #plt.close('all')
 for i in range(num_runs):

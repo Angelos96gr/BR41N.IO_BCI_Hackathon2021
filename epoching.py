@@ -89,7 +89,18 @@ def make_epo(y, idx_cust, trig):
     return epo_eeg
 
 def autore(epo_eeg_cust):
+    """
+       This function is used for artifact correction/rejection
+       ----------
+       epo_eeg_cust: MNE.Epochs
+            Epochs data
 
+       Returns
+       -------
+       clean: MNE.Epochs
+           Artifact-free epochs data
+
+       """
     ar = AutoReject(n_jobs=4)
     ar.fit(epo_eeg_cust)
     epo_ar, reject_log = ar.transform(epo_eeg_cust, return_log=True)

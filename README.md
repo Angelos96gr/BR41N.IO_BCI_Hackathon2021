@@ -4,6 +4,10 @@ This repository contains the code developed in the BR41N.IO Brain Computer Inter
 
 In this project, we analyzed a vibro-tactile P300 BCI data-set from a patient with locked-in syndrom in order to optimize pre-processing, feature extraction and classification algorithms.
 
+
+The scripts require the mne https://mne.tools/stable/install/mne_python.html and autoreject https://autoreject.github.io/ packages.
+
+
 The proposed pipeline follows:
 
 1. Preprocessing:

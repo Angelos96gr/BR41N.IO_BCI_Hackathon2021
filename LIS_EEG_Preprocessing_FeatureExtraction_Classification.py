@@ -32,7 +32,7 @@ num_runs = 5
 #plt.close('all')
 for i in range(num_runs):
     # define the directory where the data is stred
-    dir_eeg = 'D:\\brainHack\\branIOHackathon2021\data\\'
+    dir_eeg = 'C:\\Users\\aless\\branIOHackathon2021\data'
 
     # read all eeg files in this directory
     file_names = glob.glob(op.join(dir_eeg, f'**.mat'))
@@ -87,10 +87,9 @@ for i in range(num_runs):
     df = pd.DataFrame()
 
     for ch in range(epoch.shape[2]):
-        feature = extract(epoch[:, :, ch], fs, 0.6, 0.1, amplitude=True, amplitude_P300=True,
+        feature = extract(epoch[:, :, ch], fs, 0.1, amplitude=True, amplitude_P300=True,
                           kurtosis=True, skewness=True, std=True, sampen=True, rms=True, hurst=True, gradient=True,
-                          alfa=True, beta=True, theta=True, delta=True,
-                          base_theta=False, broad_band=True, base_high_gamma=False)
+                          alfa=True, beta=True, theta=True, delta=True, broad_band=True,)
 
         current = pd.DataFrame(feature)
         current['class'] = labels - 1

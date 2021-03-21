@@ -5,16 +5,24 @@ import numpy as np
 
 def load_data(data):
     """
+    This function will just extract some common parameters from the matlab .mat structure. This function take into mind
+    the structure of the data given during the "BrainStorms Festival 2021" HACKATHON
 
     Parameters
     ----------
     data: Matlab
-        structure
+        Matlab .mat structure
 
     Returns
     -------
-    y: data
-    trig: triggering label
+    y: narray (float)
+        Data from different EEG channels
+    trig: narray (-1, 0, +1, +2)
+        Triggering array used to keep track on the events
+    fs: int
+        Sampling frequency
+    time_vector: narray (float)
+        Time vector of the entire acquisition
     """
     y = data['y']
     trig = data['trig']
@@ -26,7 +34,19 @@ def load_data(data):
 
 
 def find_trigs(trig):
-    idx = np.where(trig.squeeze() != 0)[0]  # Index of triggering
+    """
+    This function will find the sample point in which a given triggering event occurs
+    Parameters
+    ----------
+    trig: narray (-1, 0, +1, +2)
+        Triggering array used to keep track on the events
+
+    Returns
+    -------
+    indic: list (3 array list)
+        List of the indexes of the events
+
+    """
     idx_n1 = np.where(trig.squeeze() == -1)[0]  # Triggers for -1
     idx_p1 = np.where(trig.squeeze() == 1)[0]  # Triggers for +1
     idx_p2 = np.where(trig.squeeze() == 2)[0]  # Triggers for +2
@@ -35,6 +55,23 @@ def find_trigs(trig):
 
 
 def make_epo(y, idx_cust, trig):
+    """
+    This function is used to create the MNE.Epochs object
+    Parameters
+    ----------
+    y: narray (float)
+        Data from different EEG channels
+    idx_cust: narray (int)
+        Trigger array used to keep track on ONE particular event
+    trig: narray (-1, 0, +1, +2)
+        Triggering array used to keep track on the events
+
+    Returns
+    -------
+    epo_egg: MNE.Epochs
+        Epochs data
+
+    """
     fs = 256
     ch_names = ['C4', 'C3', 'Fz', 'Cz', 'CP1', 'CPz', 'CP2', 'Pz']
     ch_types = ['eeg'] * 8

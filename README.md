@@ -1,6 +1,6 @@
 # BR41N.IO_BCI_Hackathon2021
 
-This repository contains the code developed in the BR41N.IO Brain Computer Interface Hackathon 2021 by Pölikübs to receive 2nd place on the data analysis project "Locked In Syndrome".
+This repository contains the code developed in the BR41N.IO Brain Computer Interface Hackathon 2021 by Pölikübs consisting of Angelos Theocharis, Chiara Lambranzi and Alessandro Murari to receive 2nd place on the data analysis project "Locked In Syndrome". 
 
 In this project, we analyzed a vibro-tactile P300 BCI data-set from a patient with locked-in syndrom in order to optimize pre-processing, feature extraction and classification algorithms.
 
